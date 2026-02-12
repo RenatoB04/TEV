@@ -39,12 +39,14 @@ struct ContentView: View {
                 Button("7") { appendNumber("7") }
                 Button("8") { appendNumber("8") }
                 Button("9") { appendNumber("9") }
-                Button("=") {calculate() }
+                Button("*") { setOperation("*") }
             }
             
             HStack {
                 Button("0") { appendNumber("0") }
                 Button("C") { clear() }
+                Button("=") {calculate() }
+                Button("/") { setOperation("/") }
             }
         }
         .padding()
@@ -74,6 +76,8 @@ struct ContentView: View {
         switch operation {
         case "+": display = "\(firstNumber + secondNumber)"
         case "-": display = "\(firstNumber - secondNumber)"
+        case "*": display = "\(firstNumber * secondNumber)"
+        case "/": display = "\(firstNumber / secondNumber)"
         default: break
         }
         operation = nil
